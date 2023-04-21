@@ -1,12 +1,10 @@
-import { response } from "express";
-import { db } from "./dbconnect";
+import { db } from "./dbconnect.js";
 
 const coll = db.collection("tasks")
 
 export async function addNewItem(req, res) {
     const newItem = req.body
     await coll.add(newItem)
-    // now return the whole (updated) list...
    getAllItems(req, res)
 }
 
