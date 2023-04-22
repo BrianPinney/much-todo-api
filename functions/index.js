@@ -9,7 +9,7 @@ app.use(express.json())
 
 app.post("/items", addNewItem)
 app.get("/items", getAllItems)
-app.delete("/items:id", deleteItem)
-app.patch("/items:id", updateItem)
+app.delete("/items/:id", deleteItem)
+app.patch("/items/:id", updateItem)
 
 export const api = functions.https.onRequest(app)
