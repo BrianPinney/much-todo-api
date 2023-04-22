@@ -13,3 +13,16 @@ export async function getAllItems(req, res) {
     const itemsClean = itemsMessy.docs.map(doc => ({...doc.data(), id: doc.id}))
     res.send(itemsClean)
 }
+
+export async function deleteItem(req, res){
+    const { id } = req.params
+    await coll.doc(id).delete()
+    res.send()
+}
+
+export async function updateItem(req, res){
+    const { id } = req.params
+    const updateInfo = req.body
+    await coll.doc(id).update(updateInfo)
+    res.send()
+}
